@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Cadence — collaborative editing for podcast teams." />
+  <title>Cadence — Editing, in sync</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="header">
+    <div class="header__inner">
+      <a href="#top" class="header__logo" aria-label="Cadence home">
+        <span class="header__logo-mark" aria-hidden="true">
+          <span class="header__logo-bar"></span>
+          <span class="header__logo-bar"></span>
+          <span class="header__logo-bar"></span>
+          <span class="header__logo-bar"></span>
+        </span>
+        Cadence
+      </a>
+
+      <button class="header__toggle" id="navToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Toggle navigation menu">
+        <span class="header__toggle-line"></span>
+        <span class="header__toggle-line"></span>
+        <span class="header__toggle-line"></span>
+      </button>
+
+      <nav class="nav" id="primaryNav" aria-label="Primary">
+        <ul class="nav__list">
+          <li class="nav__item"><a class="nav__link" href="#features">Features</a></li>
+          <li class="nav__item"><a class="nav__link" href="#transcripts">Transcripts</a></li>
+          <li class="nav__item"><a class="nav__link" href="#workflow">Workflow</a></li>
+          <li class="nav__item"><a class="nav__link" href="#pricing">Pricing</a></li>
+          <li class="nav__item"><a class="nav__link" href="#faq">FAQ</a></li>
+        </ul>
+        <div class="nav__actions">
+          <button class="theme-toggle" id="themeToggle" aria-label="Switch to light mode" aria-pressed="false">
+            <svg class="theme-toggle__icon theme-toggle__icon--moon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg class="theme-toggle__icon theme-toggle__icon--sun" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <a class="btn btn--primary btn--small" href="#signup">Start free</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="hero" id="top">
+      <div class="hero__inner">
+        <div class="hero__copy">
+          <p class="eyebrow">For podcast &amp; audio teams</p>
+          <h1 class="hero__title">
+            Editing that stays <em>in sync,</em> even when your team isn't in the room.
+          </h1>
+          <p class="hero__sub">
+            Cadence turns raw recordings into shippable episodes — with live multi-editor timelines, timestamped notes, and one-click handoffs to your host.
+          </p>
+          <div class="hero__actions">
+            <a href="#signup" class="btn btn--primary">Start free</a>
+            <a href="#workflow" class="btn btn--ghost">See how it works</a>
+          </div>
+          <p class="hero__meta">No credit card. 3 episodes free, every month.</p>
+        </div>
+
+        <div class="hero__visual reveal" aria-hidden="true">
+          <div class="waveform-card">
+            <div class="waveform-card__head">
+              <span class="waveform-card__dot"></span>
+              <span class="waveform-card__file">ep_042_final_mix.wav</span>
+            </div>
+            <div class="waveform" id="waveform"></div>
+            <div class="waveform-card__marks">
+              <span>0:00</span><span>12:30</span><span>25:00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Cadence usage statistics">
+      <div class="section__inner stats__inner">
+        <div class="stat reveal">
+          <span class="stat__number">10,000+</span>
+          <span class="stat__label">episodes edited</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat__number">500+</span>
+          <span class="stat__label">teams shipping weekly</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat__number">40%</span>
+          <span class="stat__label">faster turnaround</span>
+        </div>
+        <div class="stat reveal">
+          <span class="stat__number">99.9%</span>
+          <span class="stat__label">uptime, every month</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <div class="section__inner">
+        <p class="eyebrow">What's inside</p>
+        <h2 class="section__title">Three tools your editor already wishes they had</h2>
+
+        <div class="features__grid">
+          <article class="feature-card reveal">
+            <span class="feature-card__time">0:00</span>
+            <h3 class="feature-card__title">Live shared timeline</h3>
+            <p class="feature-card__text">Two editors, one waveform. Cuts, fades, and markers sync instantly — no exported files, no version confusion.</p>
+          </article>
+
+          <article class="feature-card reveal">
+            <span class="feature-card__time">0:42</span>
+            <h3 class="feature-card__title">Timestamped notes</h3>
+            <p class="feature-card__text">Drop a comment right on the second it applies to. Your host replies without ever opening the editing software.</p>
+          </article>
+
+          <article class="feature-card reveal">
+            <span class="feature-card__time">1:18</span>
+            <h3 class="feature-card__title">One-click handoff</h3>
+            <p class="feature-card__text">Export a review link, a distribution-ready master, or both — with loudness-normalized audio, automatically.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="transcripts" id="transcripts">
+      <div class="section__inner transcripts__inner">
+        <div class="transcripts__copy">
+          <p class="eyebrow">Beyond audio editing</p>
+          <h2 class="section__title">Every recording becomes a searchable transcript — automatically.</h2>
+          <p class="transcripts__sub">
+            Cadence isn't just for podcasts. Team standups, client calls, and interview sessions all get speaker-labeled, timestamped transcripts within minutes of upload — so nobody re-listens to a whole recording to find one decision.
+          </p>
+
+          <ul class="transcripts__points">
+            <li class="reveal">
+              <span class="transcripts__point-icon" aria-hidden="true">◆</span>
+              Speaker detection labels each voice automatically
+            </li>
+            <li class="reveal">
+              <span class="transcripts__point-icon" aria-hidden="true">◆</span>
+              Click any line to jump straight to that moment in the audio
+            </li>
+            <li class="reveal">
+              <span class="transcripts__point-icon" aria-hidden="true">◆</span>
+              Search across every meeting you've ever recorded
+            </li>
+            <li class="reveal">
+              <span class="transcripts__point-icon" aria-hidden="true">◆</span>
+              Export action items straight to your notes app
+            </li>
+          </ul>
+
+          <a href="#signup" class="btn btn--ghost">Try it on your next meeting</a>
+        </div>
+
+        <div class="transcripts__visual reveal" aria-hidden="true">
+          <div class="transcript-card">
+            <div class="transcript-card__head">
+              <span class="waveform-card__dot"></span>
+              <span class="transcript-card__file">team_sync_july.wav — transcript</span>
+            </div>
+            <div class="transcript-card__search">
+              <span class="transcript-card__search-icon">⌕</span>
+              <span class="transcript-card__search-text">Search this transcript…</span>
+            </div>
+            <div class="transcript-card__lines" id="transcriptLines"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="workflow" id="workflow">
+      <div class="section__inner">
+        <p class="eyebrow">The workflow</p>
+        <h2 class="section__title">From raw take to release, without the group chat</h2>
+
+        <ol class="workflow__list">
+          <li class="workflow__step reveal">
+            <span class="workflow__step-time">Record</span>
+            <p>Import from Zoom, Riverside, or a local mic feed. Cadence auto-splits speakers on arrival.</p>
+          </li>
+          <li class="workflow__step reveal">
+            <span class="workflow__step-time">Edit together</span>
+            <p>Invite your co-editor. You'll both see the same waveform move in real time.</p>
+          </li>
+          <li class="workflow__step reveal">
+            <span class="workflow__step-time">Review &amp; ship</span>
+            <p>Send a timestamped review link to your host, then export the final master in one pass.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="integrations" aria-label="Tools Cadence works with">
+      <div class="section__inner integrations__inner">
+        <p class="integrations__label">Works with the tools you already use</p>
+        <ul class="integrations__list">
+          <li>Zoom</li>
+          <li>Google Meet</li>
+          <li>Riverside</li>
+          <li>Slack</li>
+          <li>Notion</li>
+          <li>Dropbox</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="preview">
+      <div class="section__inner">
+        <p class="eyebrow">Inside the editor</p>
+        <h2 class="section__title">See what your team sees</h2>
+        <img
+          class="preview__image reveal"
+          src="preview.jpg"
+          alt="Cadence editor interface showing a shared waveform timeline with timestamped comments"
+          width="1200"
+          height="675"
+          loading="lazy"
+        />
+      </div>
+    </section>
+
+    <section class="testimonials" aria-label="What teams say about Cadence">
+      <div class="section__inner">
+        <p class="eyebrow">Trusted by teams</p>
+        <h2 class="section__title">Editors and producers who ship faster with Cadence</h2>
+
+        <div class="testimonials__grid">
+          <blockquote class="testimonial-card reveal">
+            <p class="testimonial-card__quote">We used to email .wav files back and forth for a week. Now my co-editor and I finish an episode in one sitting.</p>
+            <footer class="testimonial-card__author">
+              <span class="testimonial-card__name">Ritika Sinha</span>
+              <span class="testimonial-card__role">Producer, Weekend Longform</span>
+            </footer>
+          </blockquote>
+
+          <blockquote class="testimonial-card reveal">
+            <p class="testimonial-card__quote">Our host stopped asking to sit in on edits. She just opens the review link, drops a timestamped note, and we're done.</p>
+            <footer class="testimonial-card__author">
+              <span class="testimonial-card__name">Arjun Mehta</span>
+              <span class="testimonial-card__role">Lead Editor, Studio Loop</span>
+            </footer>
+          </blockquote>
+
+          <blockquote class="testimonial-card reveal">
+            <p class="testimonial-card__quote">The transcript search alone paid for itself — pulling old meeting decisions used to take me twenty minutes per search.</p>
+            <footer class="testimonial-card__author">
+              <span class="testimonial-card__name">Fatima Noor</span>
+              <span class="testimonial-card__role">Ops Lead, Northbound Media</span>
+            </footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+      <div class="section__inner">
+        <p class="eyebrow">Pricing</p>
+        <h2 class="section__title">Simple pricing that scales with your team</h2>
+
+        <div class="pricing__grid">
+          <article class="pricing-card reveal">
+            <div class="pricing-card__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M4 12v0M9 8v8M14 5v14M19 9v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            </div>
+            <h3 class="pricing-card__name">Free</h3>
+            <p class="pricing-card__price">$0<span>/month</span></p>
+            <p class="pricing-card__desc">For solo editors just getting started.</p>
+            <div class="pricing-card__divider"></div>
+            <ul class="pricing-card__features">
+              <li>3 episodes per month</li>
+              <li>1 editor seat</li>
+              <li>Basic transcription</li>
+              <li>Community support</li>
+            </ul>
+            <a href="#signup" class="btn btn--ghost pricing-card__cta">Start free</a>
+          </article>
+
+          <article class="pricing-card pricing-card--popular reveal">
+            <span class="pricing-card__badge">Most popular</span>
+            <div class="pricing-card__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M17 20v-1a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v1M10 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM21 20v-1a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3 class="pricing-card__name">Team</h3>
+            <p class="pricing-card__price">$29<span>/month</span></p>
+            <p class="pricing-card__desc">For teams shipping episodes every week.</p>
+            <div class="pricing-card__divider"></div>
+            <ul class="pricing-card__features">
+              <li>Unlimited episodes</li>
+              <li>Up to 5 editor seats</li>
+              <li>Full transcript search &amp; export</li>
+              <li>Priority review links</li>
+              <li>Email support</li>
+            </ul>
+            <a href="#signup" class="btn btn--primary pricing-card__cta">Start free trial</a>
+          </article>
+
+          <article class="pricing-card reveal">
+            <div class="pricing-card__icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3ZM19 10v1a7 7 0 0 1-14 0v-1M12 18v4M8 22h8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3 class="pricing-card__name">Studio</h3>
+            <p class="pricing-card__price">$79<span>/month</span></p>
+            <p class="pricing-card__desc">For studios running multiple shows at once.</p>
+            <div class="pricing-card__divider"></div>
+            <ul class="pricing-card__features">
+              <li>Everything in Team</li>
+              <li>Unlimited editor seats</li>
+              <li>Advanced speaker detection</li>
+              <li>API access</li>
+              <li>Dedicated onboarding</li>
+            </ul>
+            <a href="#signup" class="btn btn--ghost pricing-card__cta">Talk to us</a>
+          </article>
+        </div>
+
+        <p class="pricing__note">All plans include a 14-day trial. No credit card required to start.</p>
+      </div>
+    </section>
+    <section class="faq" id="faq">
+      <div class="section__inner">
+        <p class="eyebrow">Questions</p>
+        <h2 class="section__title">Frequently asked questions</h2>
+
+        <div class="faq__list">
+          <div class="faq-item reveal" data-open="true">
+            <button class="faq-item__question">
+              <span class="faq-item__index">Q01</span>
+              <span class="faq-item__text">Does Cadence work with Zoom and Google Meet recordings?</span>
+              <span class="faq-item__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-item__answer">
+              <p>Yes. Cadence imports recordings directly from Zoom, Google Meet, and Riverside, or you can upload a local file. Speaker splitting happens automatically on arrival.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-item__question">
+              <span class="faq-item__index">Q02</span>
+              <span class="faq-item__text">Can I export the transcripts?</span>
+              <span class="faq-item__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-item__answer">
+              <p>Yes — transcripts export as plain text or SRT files, and every line stays linked to its timestamp in the original recording.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-item__question">
+              <span class="faq-item__index">Q03</span>
+              <span class="faq-item__text">Is there a limit to how many people can co-edit?</span>
+              <span class="faq-item__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-item__answer">
+              <p>The Free plan supports 1 editor seat, Team supports up to 5, and Studio has no seat limit. All co-editors see the same live waveform in real time.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-item__question">
+              <span class="faq-item__index">Q04</span>
+              <span class="faq-item__text">What happens if I go over my free episode limit?</span>
+              <span class="faq-item__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-item__answer">
+              <p>You'll get a heads-up in-app before you hit the limit, with an easy option to upgrade to Team for unlimited episodes.</p>
+            </div>
+          </div>
+
+          <div class="faq-item reveal">
+            <button class="faq-item__question">
+              <span class="faq-item__index">Q05</span>
+              <span class="faq-item__text">Can I cancel anytime?</span>
+              <span class="faq-item__icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-item__answer">
+              <p>Yes — there's no lock-in contract on any plan. Cancel anytime from your account settings and keep access until the end of your billing period.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="signup">
+      <div class="section__inner cta__inner reveal">
+        <h2 class="cta__title">Your next episode edits itself faster.</h2>
+        <p class="cta__sub">Free for teams shipping up to 3 episodes a month.</p>
+        <a href="#signup" class="btn btn--primary btn--large">Start free — takes 2 minutes</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <a href="#top" class="footer__logo">Cadence</a>
+      <ul class="footer__links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#transcripts">Transcripts</a></li>
+        <li><a href="#workflow">Workflow</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <p class="footer__copy">&copy; 2026 Cadence Audio, Inc.</p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
