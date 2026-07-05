@@ -5,6 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initThemeToggle();
   buildWaveform();
   initScrollReveal();
+  buildTranscriptLines();
+  initFaqAccordion();
 });
 
 /* Mobile hamburger nav  */
@@ -28,7 +30,6 @@ function initMobileNav() {
   });
 }
 
-/* Dark / light theme toggle*/
 function initThemeToggle() {
   const toggle = document.getElementById('themeToggle');
   const root = document.documentElement;
@@ -105,4 +106,50 @@ function initScrollReveal() {
   );
 
   items.forEach((el) => observer.observe(el));
+}
+
+/* transcript preview lines (meetings/transcription section) */
+function buildTranscriptLines() {
+  const container = document.getElementById('transcriptLines');
+  if (!container) return;
+
+  const lines = [
+    { time: '00:04', speaker: 'Ritika',  text: "Let's start with last week's retention numbers." },
+    { time: '00:19', speaker: 'Arjun',   text: 'Retention held at 68%, up two points from last sprint.' },
+    { time: '00:37', speaker: 'Fatima',  text: "Good — let's ship the onboarding change before Friday." },
+    { time: '00:52', speaker: 'Ritika',  text: "I'll send the review link once QA signs off." },
+  ];
+
+  const fragment = document.createDocumentFragment();
+  lines.forEach((line, i) => {
+    const row = document.createElement('div');
+    row.className = 'transcript-line';
+    row.style.animationDelay = `${i * 0.25}s`;
+    row.innerHTML = `
+      <span class="transcript-line__time">${line.time}</span>
+      <span class="transcript-line__body">
+        <span class="transcript-line__speaker">${line.speaker}</span>
+        <span class="transcript-line__text">${line.text}</span>
+      </span>
+    `;
+    fragment.appendChild(row);
+  });
+  container.appendChild(fragment);
+}
+
+/* FAQ accordion — only one item open at a time */
+function initFaqAccordion() {
+  const items = document.querySelectorAll('.faq-item');
+  if (!items.length) return;
+
+  items.forEach((item) => {
+    const button = item.querySelector('.faq-item__question');
+    button.addEventListener('click', () => {
+      const isOpen = item.getAttribute('data-open') === 'true';
+
+      items.forEach((other) => other.setAttribute('data-open', 'false'));
+
+      item.setAttribute('data-open', String(!isOpen));
+    });
+  });
 }
