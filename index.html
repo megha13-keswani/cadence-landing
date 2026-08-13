@@ -11,6 +11,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="styles.css" />
+
+  <script>
+    (function () {
+      try {
+        var saved = JSON.parse(localStorage.getItem('cadence-state') || '{}');
+        var prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+        var theme = saved.theme || (prefersLight ? 'light' : 'dark');
+        if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+      } catch (e) { /* localStorage unavailable, fall back to CSS default */ }
+    })();
+  </script>
 </head>
 <body>
 
@@ -37,8 +48,10 @@
       <nav class="nav" id="primaryNav" aria-label="Primary">
         <ul class="nav__list">
           <li class="nav__item"><a class="nav__link" href="#features">Features</a></li>
+          <li class="nav__item"><a class="nav__link" href="#transcripts">Transcripts</a></li>
           <li class="nav__item"><a class="nav__link" href="#workflow">Workflow</a></li>
           <li class="nav__item"><a class="nav__link" href="#pricing">Pricing</a></li>
+          <li class="nav__item"><a class="nav__link" href="#faq">FAQ</a></li>
         </ul>
         <div class="nav__actions">
           <button class="theme-toggle" id="themeToggle" aria-label="Switch to light mode" aria-pressed="false">
@@ -85,29 +98,51 @@
       </div>
     </section>
 
+    <section class="stats" aria-label="Cadence usage statistics">
+      <div class="section__inner stats__inner" id="statsGrid" aria-live="polite">
+        <p class="empty-state" data-empty-for="statsGrid">Loading stats…</p>
+      </div>
+    </section>
+
     <section class="features" id="features">
       <div class="section__inner">
         <p class="eyebrow">What's inside</p>
         <h2 class="section__title">Three tools your editor already wishes they had</h2>
 
-        <div class="features__grid">
-          <article class="feature-card reveal">
-            <span class="feature-card__time">0:00</span>
-            <h3 class="feature-card__title">Live shared timeline</h3>
-            <p class="feature-card__text">Two editors, one waveform. Cuts, fades, and markers sync instantly — no exported files, no version confusion.</p>
-          </article>
+        <div class="features__grid" id="featuresGrid" aria-live="polite">
+          <p class="empty-state" data-empty-for="featuresGrid">Loading features…</p>
+        </div>
+      </div>
+    </section>
 
-          <article class="feature-card reveal">
-            <span class="feature-card__time">0:42</span>
-            <h3 class="feature-card__title">Timestamped notes</h3>
-            <p class="feature-card__text">Drop a comment right on the second it applies to. Your host replies without ever opening the editing software.</p>
-          </article>
+    <section class="transcripts" id="transcripts">
+      <div class="section__inner transcripts__inner">
+        <div class="transcripts__copy">
+          <p class="eyebrow">Beyond audio editing</p>
+          <h2 class="section__title">Every recording becomes a searchable transcript — automatically.</h2>
+          <p class="transcripts__sub">
+            Cadence isn't just for podcasts. Team standups, client calls, and interview sessions all get speaker-labeled, timestamped transcripts within minutes of upload — so nobody re-listens to a whole recording to find one decision.
+          </p>
 
-          <article class="feature-card reveal">
-            <span class="feature-card__time">1:18</span>
-            <h3 class="feature-card__title">One-click handoff</h3>
-            <p class="feature-card__text">Export a review link, a distribution-ready master, or both — with loudness-normalized audio, automatically.</p>
-          </article>
+          <ul class="transcripts__points" id="transcriptPoints" aria-live="polite">
+            <li class="empty-state" data-empty-for="transcriptPoints">Loading…</li>
+          </ul>
+
+          <a href="#signup" class="btn btn--ghost">Try it on your next meeting</a>
+        </div>
+
+        <div class="transcripts__visual reveal" aria-hidden="true">
+          <div class="transcript-card">
+            <div class="transcript-card__head">
+              <span class="waveform-card__dot"></span>
+              <span class="transcript-card__file">team_sync_july.wav — transcript</span>
+            </div>
+            <div class="transcript-card__search">
+              <span class="transcript-card__search-icon">⌕</span>
+              <span class="transcript-card__search-text">Search this transcript…</span>
+            </div>
+            <div class="transcript-card__lines" id="transcriptLines"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -117,24 +152,21 @@
         <p class="eyebrow">The workflow</p>
         <h2 class="section__title">From raw take to release, without the group chat</h2>
 
-        <ol class="workflow__list">
-          <li class="workflow__step reveal">
-            <span class="workflow__step-time">Record</span>
-            <p>Import from Zoom, Riverside, or a local mic feed. Cadence auto-splits speakers on arrival.</p>
-          </li>
-          <li class="workflow__step reveal">
-            <span class="workflow__step-time">Edit together</span>
-            <p>Invite your co-editor. You'll both see the same waveform move in real time.</p>
-          </li>
-          <li class="workflow__step reveal">
-            <span class="workflow__step-time">Review &amp; ship</span>
-            <p>Send a timestamped review link to your host, then export the final master in one pass.</p>
-          </li>
+        <ol class="workflow__list" id="workflowList" aria-live="polite">
+          <li class="empty-state" data-empty-for="workflowList">Loading workflow…</li>
         </ol>
       </div>
     </section>
 
-    <!-- PREVIEW (demonstrates CLS-safe, lazy-loaded media) -->
+    <section class="integrations" aria-label="Tools Cadence works with">
+      <div class="section__inner integrations__inner">
+        <p class="integrations__label">Works with the tools you already use</p>
+        <ul class="integrations__list" id="integrationsList" aria-live="polite">
+          <li class="empty-state" data-empty-for="integrationsList">Loading…</li>
+        </ul>
+      </div>
+    </section>
+
     <section class="preview">
       <div class="section__inner">
         <p class="eyebrow">Inside the editor</p>
@@ -150,10 +182,44 @@
       </div>
     </section>
 
-    <section class="cta" id="pricing">
+    <section class="testimonials" aria-label="What teams say about Cadence">
+      <div class="section__inner">
+        <p class="eyebrow">Trusted by teams</p>
+        <h2 class="section__title">Editors and producers who ship faster with Cadence</h2>
+
+        <div class="testimonials__grid" id="testimonialsGrid" aria-live="polite">
+          <p class="empty-state" data-empty-for="testimonialsGrid">Loading testimonials…</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="pricing" id="pricing">
+      <div class="section__inner">
+        <p class="eyebrow">Pricing</p>
+        <h2 class="section__title">Simple pricing that scales with your team</h2>
+
+        <div class="pricing__grid" id="pricingGrid" aria-live="polite">
+          <p class="empty-state" data-empty-for="pricingGrid">Loading plans…</p>
+        </div>
+
+        <p class="pricing__note">All plans include a 14-day trial. No credit card required to start.</p>
+      </div>
+    </section>
+    <section class="faq" id="faq">
+      <div class="section__inner">
+        <p class="eyebrow">Questions</p>
+        <h2 class="section__title">Frequently asked questions</h2>
+
+        <div class="faq__list" id="faqList" aria-live="polite">
+          <p class="empty-state" data-empty-for="faqList">Loading questions…</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta" id="signup">
       <div class="section__inner cta__inner reveal">
         <h2 class="cta__title">Your next episode edits itself faster.</h2>
-        <p class="cta__sub">Free for teams shipping up to 3 episodes a month. No credit card required.</p>
+        <p class="cta__sub">Free for teams shipping up to 3 episodes a month.</p>
         <a href="#signup" class="btn btn--primary btn--large">Start free — takes 2 minutes</a>
       </div>
     </section>
@@ -165,8 +231,10 @@
       <a href="#top" class="footer__logo">Cadence</a>
       <ul class="footer__links">
         <li><a href="#features">Features</a></li>
+        <li><a href="#transcripts">Transcripts</a></li>
         <li><a href="#workflow">Workflow</a></li>
         <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
       </ul>
       <p class="footer__copy">&copy; 2026 Cadence Audio, Inc.</p>
     </div>

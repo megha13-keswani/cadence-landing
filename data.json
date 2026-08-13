@@ -1,0 +1,108 @@
+{
+  "stats": [
+    { "number": "10,000+", "label": "episodes edited" },
+    { "number": "500+", "label": "teams shipping weekly" },
+    { "number": "40%", "label": "faster turnaround" },
+    { "number": "99.9%", "label": "uptime, every month" }
+  ],
+  "features": [
+    {
+      "time": "0:00",
+      "title": "Live shared timeline",
+      "text": "Two editors, one waveform. Cuts, fades, and markers sync instantly — no exported files, no version confusion."
+    },
+    {
+      "time": "0:42",
+      "title": "Timestamped notes",
+      "text": "Drop a comment right on the second it applies to. Your host replies without ever opening the editing software."
+    },
+    {
+      "time": "1:18",
+      "title": "One-click handoff",
+      "text": "Export a review link, a distribution-ready master, or both — with loudness-normalized audio, automatically."
+    }
+  ],
+  "transcriptPoints": [
+    "Speaker detection labels each voice automatically",
+    "Click any line to jump straight to that moment in the audio",
+    "Search across every meeting you've ever recorded",
+    "Export action items straight to your notes app"
+  ],
+  "transcriptLines": [
+    { "time": "00:04", "speaker": "Ritika", "text": "Let's start with last week's retention numbers." },
+    { "time": "00:19", "speaker": "Arjun", "text": "Retention held at 68%, up two points from last sprint." },
+    { "time": "00:37", "speaker": "Fatima", "text": "Good — let's ship the onboarding change before Friday." },
+    { "time": "00:52", "speaker": "Ritika", "text": "I'll send the review link once QA signs off." }
+  ],
+  "workflow": [
+    { "step": "Record", "text": "Import from Zoom, Riverside, or a local mic feed. Cadence auto-splits speakers on arrival." },
+    { "step": "Edit together", "text": "Invite your co-editor. You'll both see the same waveform move in real time." },
+    { "step": "Review & ship", "text": "Send a timestamped review link to your host, then export the final master in one pass." }
+  ],
+  "integrations": ["Zoom", "Google Meet", "Riverside", "Slack", "Notion", "Dropbox"],
+  "testimonials": [
+    {
+      "quote": "We used to email .wav files back and forth for a week. Now my co-editor and I finish an episode in one sitting.",
+      "name": "Ritika Sinha",
+      "role": "Producer, Weekend Longform"
+    },
+    {
+      "quote": "Our host stopped asking to sit in on edits. She just opens the review link, drops a timestamped note, and we're done.",
+      "name": "Arjun Mehta",
+      "role": "Lead Editor, Studio Loop"
+    },
+    {
+      "quote": "The transcript search alone paid for itself — pulling old meeting decisions used to take me twenty minutes per search.",
+      "name": "Fatima Noor",
+      "role": "Ops Lead, Northbound Media"
+    }
+  ],
+  "pricing": [
+    {
+      "name": "Free",
+      "price": "$0",
+      "desc": "For solo editors just getting started.",
+      "features": ["3 episodes per month", "1 editor seat", "Basic transcription", "Community support"],
+      "cta": "Start free",
+      "popular": false
+    },
+    {
+      "name": "Team",
+      "price": "$29",
+      "desc": "For teams shipping episodes every week.",
+      "features": ["Unlimited episodes", "Up to 5 editor seats", "Full transcript search & export", "Priority review links", "Email support"],
+      "cta": "Start free trial",
+      "popular": true
+    },
+    {
+      "name": "Studio",
+      "price": "$79",
+      "desc": "For studios running multiple shows at once.",
+      "features": ["Everything in Team", "Unlimited editor seats", "Advanced speaker detection", "API access", "Dedicated onboarding"],
+      "cta": "Talk to us",
+      "popular": false
+    }
+  ],
+  "faq": [
+    {
+      "q": "Does Cadence work with Zoom and Google Meet recordings?",
+      "a": "Yes. Cadence imports recordings directly from Zoom, Google Meet, and Riverside, or you can upload a local file. Speaker splitting happens automatically on arrival."
+    },
+    {
+      "q": "Can I export the transcripts?",
+      "a": "Yes — transcripts export as plain text or SRT files, and every line stays linked to its timestamp in the original recording."
+    },
+    {
+      "q": "Is there a limit to how many people can co-edit?",
+      "a": "The Free plan supports 1 editor seat, Team supports up to 5, and Studio has no seat limit. All co-editors see the same live waveform in real time."
+    },
+    {
+      "q": "What happens if I go over my free episode limit?",
+      "a": "You'll get a heads-up in-app before you hit the limit, with an easy option to upgrade to Team for unlimited episodes."
+    },
+    {
+      "q": "Can I cancel anytime?",
+      "a": "Yes — there's no lock-in contract on any plan. Cancel anytime from your account settings and keep access until the end of your billing period."
+    }
+  ]
+}
