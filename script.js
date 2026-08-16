@@ -1,11 +1,3 @@
-// Cadence — Sprint 2: State Injection, Persistence & Event Architecture
-
-/* ============================================================
-   PHASE 3 — Custom PubSub Event Bus
-   Decouples app logic (state changes) from UI logic (DOM events).
-   Any module can `emit` without knowing who's listening, and any
-   module can `on` without knowing who emits.
-   ============================================================ */
 class EventBus {
   constructor() {
     this.listeners = {};
@@ -24,19 +16,11 @@ class EventBus {
 }
 const bus = new EventBus();
 
-// Example subscribers: pure diagnostics, completely decoupled from the DOM.
-// Deleting these four lines would not break the toggle, nav, or FAQ — proof
-// that the emitting code and the listening code don't know about each other.
 bus.on('theme:changed', (theme) => console.log(`[Cadence] theme -> ${theme}`));
 bus.on('faq:toggled', (i) => console.log(`[Cadence] faq item ${i === -1 ? 'closed' : i} opened`));
 bus.on('nav:toggled', (open) => console.log(`[Cadence] mobile nav ${open ? 'opened' : 'closed'}`));
 bus.on('data:loaded', (data) => console.log(`[Cadence] hydrated ${Object.keys(data).length} sections from data.json`));
 
-/* ============================================================
-   PHASE 2 — Central App State + localStorage Persistence
-   One serialized object, one storage key. The <head> inline script
-   reads the same key before first paint to avoid a theme flicker.
-   ============================================================ */
 const STORAGE_KEY = 'cadence-state';
 const defaultState = { theme: null, faqOpenIndex: -1 };
 
@@ -60,9 +44,6 @@ function setState(patch) {
   saveState(appState);
 }
 
-/* ============================================================
-   BOOTSTRAP
-   ============================================================ */
 document.addEventListener('DOMContentLoaded', () => {
   initMobileNav();
   initThemeToggle();
@@ -71,11 +52,6 @@ document.addEventListener('DOMContentLoaded', () => {
   loadAndRenderData();
 });
 
-/* Mobile hamburger nav.
-   PHASE 3 memory-leak demo: the outside-click listener is only attached to
-   `document` while the menu is open, and explicitly removeEventListener'd
-   the moment it closes — it never lingers after the element it protects
-   is no longer visible/relevant. */
 function initMobileNav() {
   const toggle = document.getElementById('navToggle');
   const nav = document.getElementById('primaryNav');
@@ -95,7 +71,7 @@ function initMobileNav() {
     nav.classList.remove('is-open');
     toggle.classList.remove('is-active');
     toggle.setAttribute('aria-expanded', 'false');
-    document.removeEventListener('click', onOutsideClick); // <- explicit cleanup
+    document.removeEventListener('click', onOutsideClick); 
     bus.emit('nav:toggled', false);
   }
 
@@ -106,7 +82,6 @@ function initMobileNav() {
   nav.querySelectorAll('.nav__link').forEach((link) => link.addEventListener('click', closeNav));
 }
 
-/* Theme toggle — reads/writes the shared appState (Phase 2) instead of its own key */
 function initThemeToggle() {
   const toggle = document.getElementById('themeToggle');
   const root = document.documentElement;
