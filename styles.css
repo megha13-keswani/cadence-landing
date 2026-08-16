@@ -865,7 +865,6 @@ button { font: inherit; background: none; border: none; cursor: pointer; color: 
 .footer__links a:hover { color: var(--color-accent); }
 .footer__copy { color: var(--color-text-dim); font-size: var(--fs-small); }
 
-/* Phase 1/2 — loading + empty-state placeholders for JSON-hydrated sections */
 .empty-state {
   color: var(--color-text-dim);
   font-size: var(--fs-small);
